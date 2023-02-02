@@ -36,7 +36,7 @@ class DetailMovieController: UIViewController {
     
     func getLinkYoutubeTrailer(movieId: Int) {
         let endpointURL = URL(string: "\(APIConstants.baseURL)/movie/\(movieId)/videos?api_key=\(APIConstants.apiToken)")!
-        print("endpointLink",endpointURL)
+       
         var request = URLRequest(url: endpointURL, cachePolicy: URLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: 30)
         request.httpMethod = self.apiService.getMethod.rawValue
         

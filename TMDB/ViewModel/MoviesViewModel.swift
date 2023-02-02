@@ -131,7 +131,6 @@ class MoviesViewModel: NSObject {
             switch result {
             case .success(let data):
                 self.videoResponse = data
-                print("self.videoResponse",self.videoResponse)
             case .failure(let error):
                 print("Error to get link youtube =", error)
             }
