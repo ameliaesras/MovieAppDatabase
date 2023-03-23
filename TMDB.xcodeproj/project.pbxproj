@@ -24,6 +24,11 @@
 		8AD05D5C298970FB000AA177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD05D5A298970FB000AA177 /* Main.storyboard */; };
 		8AD05D5E298970FE000AA177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD05D5D298970FE000AA177 /* Assets.xcassets */; };
 		8AD05D61298970FE000AA177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD05D5F298970FE000AA177 /* LaunchScreen.storyboard */; };
+		8E274B1829CAC78A00EECE38 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E274B1729CAC78A00EECE38 /* Review.swift */; };
+		8E6A328029CBF66200121F7C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A327F29CBF66200121F7C /* ReviewViewController.swift */; };
+		8ED0CE9329CAE5D900C397A7 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0CE9129CAE5D900C397A7 /* ReviewsTableViewCell.swift */; };
+		8ED0CE9429CAE5D900C397A7 /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED0CE9229CAE5D900C397A7 /* ReviewsTableViewCell.xib */; };
+		8ED0CE9629CB0BC900C397A7 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0CE9529CB0BC900C397A7 /* ReviewViewModel.swift */; };
 		CB3F8220F24210A2DD4A82C1 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35290A0492CB73C41784D1B /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +53,11 @@
 		8AD05D5D298970FE000AA177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD05D60298970FE000AA177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD05D62298970FE000AA177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E274B1729CAC78A00EECE38 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		8E6A327F29CBF66200121F7C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		8ED0CE9129CAE5D900C397A7 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		8ED0CE9229CAE5D900C397A7 /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReviewsTableViewCell.xib; path = ../ReviewsTableViewCell.xib; sourceTree = "<group>"; };
+		8ED0CE9529CB0BC900C397A7 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		B35290A0492CB73C41784D1B /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB06F4F5E60EB087A8D910FB /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +80,7 @@
 				8AD05D5F298970FE000AA177 /* LaunchScreen.storyboard */,
 				8AD05D5A298970FB000AA177 /* Main.storyboard */,
 				8A82C087298A12BF00F41B7B /* MoviesCollectionCell.xib */,
+				8ED0CE9229CAE5D900C397A7 /* ReviewsTableViewCell.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -79,6 +90,7 @@
 			children = (
 				8A82C08D298A246700F41B7B /* Movie.swift */,
 				8A78C161298BF51E0099E52C /* Video.swift */,
+				8E274B1729CAC78A00EECE38 /* Review.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +100,7 @@
 			children = (
 				8A78C15E298BA18E0099E52C /* Storyboard */,
 				8A82C086298A12BF00F41B7B /* MoviesCollectionCell.swift */,
+				8ED0CE9129CAE5D900C397A7 /* ReviewsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				8A82C095298A9FEA00F41B7B /* MoviesViewModel.swift */,
+				8ED0CE9529CB0BC900C397A7 /* ReviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -124,6 +138,7 @@
 			children = (
 				8AD05D58298970FB000AA177 /* MoviesController.swift */,
 				8A78C15F298BC50A0099E52C /* DetailMovieController.swift */,
+				8E6A327F29CBF66200121F7C /* ReviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A82C089298A12BF00F41B7B /* MoviesCollectionCell.xib in Resources */,
+				8ED0CE9429CAE5D900C397A7 /* ReviewsTableViewCell.xib in Resources */,
 				8AD05D61298970FE000AA177 /* LaunchScreen.storyboard in Resources */,
 				8AD05D5E298970FE000AA177 /* Assets.xcassets in Resources */,
 				8AD05D5C298970FB000AA177 /* Main.storyboard in Resources */,
@@ -306,9 +322,13 @@
 				8A82C096298A9FEA00F41B7B /* MoviesViewModel.swift in Sources */,
 				8A82C08C298A1ED000F41B7B /* UIView+layer.swift in Sources */,
 				8AD05D57298970FB000AA177 /* SceneDelegate.swift in Sources */,
+				8E274B1829CAC78A00EECE38 /* Review.swift in Sources */,
 				8A78C162298BF51E0099E52C /* Video.swift in Sources */,
+				8ED0CE9329CAE5D900C397A7 /* ReviewsTableViewCell.swift in Sources */,
 				8A82C093298A52A500F41B7B /* APIServices.swift in Sources */,
 				8A82C091298A48DA00F41B7B /* SwiftExtensions.swift in Sources */,
+				8E6A328029CBF66200121F7C /* ReviewViewController.swift in Sources */,
+				8ED0CE9629CB0BC900C397A7 /* ReviewViewModel.swift in Sources */,
 				8A82C098298AA5EB00F41B7B /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

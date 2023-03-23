@@ -18,10 +18,14 @@ class DetailMovieController: UIViewController {
     lazy var rating : Double = 0.0
     lazy var titleMovie = ""
     lazy var overview = ""
-    
-    private var moviesViewModel: MoviesViewModel!
+   
     private var apiService = APIServices()
     lazy var videoKey = ""
+    
+    lazy var reviewModel = {
+        ReviewViewModel()
+    }()
+    var reviews : [Reviews] = []
     
     @IBOutlet var youtubePreview: YTPlayerView!
     @IBOutlet var labelRatingNumber: UILabel!
@@ -29,11 +33,27 @@ class DetailMovieController: UIViewController {
     @IBOutlet var labelReleaseDate: UILabel!
     @IBOutlet var labelTitleMovie: UILabel!
     @IBOutlet var txtVewDescription: UITextView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConst: NSLayoutConstraint!
+    
     
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "ReviewsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewsTableViewCell")
+        
+        print("movieId",movieId)
+        getLinkYoutubeTrailer(movieId: movieId)
+        setupDetailMovie()
+        reviewInitViewModel()
+    }
+
+    
+    //MARK: Get Link Youtube Trailer
     func getLinkYoutubeTrailer(movieId: Int) {
         let endpointURL = URL(string: "\(APIConstants.baseURL)/movie/\(movieId)/videos?api_key=\(APIConstants.apiToken)")!
        
@@ -61,13 +81,6 @@ class DetailMovieController: UIViewController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("movieId",movieId)
-        getLinkYoutubeTrailer(movieId: movieId)
-        setupDetailMovie()
-    }
-    
     func playVideoTrailer(key: String){
         youtubePreview.load(withVideoId: key)
     }
@@ -78,6 +91,37 @@ class DetailMovieController: UIViewController {
         labelReleaseDate.text = releaseDate
         labelTitleMovie.text = titleMovie
         txtVewDescription.text = overview
+        print("descriptionDetail==",overview)
+    }
+   
+    //MARK: Init Review View Model
+    func reviewInitViewModel() {
+        reviewModel.getReviews(movieId: movieId)
+        reviewModel.reloadTableView = { [weak self] in
+            DispatchQueue.main.async {
+                if self?.reviewModel.reviewCellViewModels.count == 0 {
+                    self?.tableViewHeightConst.constant = 0
+                } else {
+                    self?.tableViewHeightConst.constant = 464
+                }
+                self?.tableView.layoutIfNeeded()
+                self?.tableView.reloadData()
+            }
+        }
+        
+    }
+}
+
+extension DetailMovieController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviewModel.reviewCellViewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewsTableViewCell.identifier, for: indexPath) as? ReviewsTableViewCell else {fatalError("xib does not exists")}
+        let cellVM = reviewModel.getReviewCellModel(at: indexPath)
+        cell.cellViewModel = cellVM
+        return cell
     }
 }
 

@@ -95,4 +95,13 @@ class APIServices {
 
         }.resume()
     }
+    
+    //MARK: Get Movie's Review
+    @discardableResult func getMovieReview(movieId: Int) async throws -> [Reviews] {
+        let endpointURL = URL(string: "\(APIConstants.baseURL)/movie/\(movieId)/reviews?api_key=\(APIConstants.apiToken)")!
+        let (data,_) = try await URLSession.shared.data(from: endpointURL)
+        let decoded = try JSONDecoder().decode(ReviewResponse.self, from: data)
+        print("ReviewResult = ",decoded.results)
+        return decoded.results
+    }
 }
